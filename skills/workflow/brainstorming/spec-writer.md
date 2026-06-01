@@ -1,0 +1,1 @@
+- write the design doc to <root>/plans/YYYY-MM-DD-<feature-name>/spec.md
