@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * Info Editor Extension
+ * Info Bar Extension
  *
  * Uses the default editor with purple-colored borders and three info lines below:
- *   1. $cost · ctx %/total · ↑input ↓output ⊕cache  (purple)
- *   2. [spinner] model · provider                     (dim)
- *   3. ~/cwd (branch)                                 (dim)
+ *   1. $cost · ctx used/total · ↑input ↓output ⊕cache  (purple)
+ *   2. [spinner] model · provider                       (dim)
+ *   3. ~/cwd (branch)                                   (dim)
  */
 
 import type { AssistantMessage } from "@earendil-works/pi-ai";
@@ -39,9 +39,10 @@ function formatCwd(cwd: string): string {
 function formatContext(ctx: ExtensionContext): string {
 	const usage = ctx.getContextUsage();
 	const contextWindow = usage?.contextWindow ?? ctx.model?.contextWindow;
-	if (!contextWindow) return "ctx 0%/?";
-	const percent = usage?.percent ?? 0;
-	return `ctx ${Math.round(percent)}%/${fmt(contextWindow)}`;
+	if (!contextWindow) return "ctx 0/?";
+	const used = usage?.tokens;
+	if (used == null) return `ctx ?/${fmt(contextWindow)}`;
+	return `ctx ${fmt(used)}/${fmt(contextWindow)}`;
 }
 
 function getSessionStats(ctx: ExtensionContext): {
