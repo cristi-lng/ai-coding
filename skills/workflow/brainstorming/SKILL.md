@@ -48,8 +48,8 @@ Follow these steps in order. At each transition, announce the current step to th
 - Present it in sections, scaled to complexity:
   - straightforward sections: a few sentences
   - complex sections: up to 200-300 words
-- Present ONE section at a time. Do not combine multiple sections in a single message.
-- Ask after each section whether it looks right so far. Be ready to go back and clarify.
+- For simple specs (3 sections or fewer), present all at once and ask if it looks right. For longer specs, present ONE section at a time and ask after each whether it looks right so far.
+- Be ready to go back and clarify.
 
 5. **Write the spec**
 
