@@ -12,5 +12,6 @@
 
 ## Process
 
+- Do not present work you haven't fully thought through.
 - Before writing new code, search the codebase for existing solutions to the same problem.
 - If tests fail after your changes, fix the root cause — do not modify the tests to pass.
