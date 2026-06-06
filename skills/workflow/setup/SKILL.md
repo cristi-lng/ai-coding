@@ -1,13 +1,13 @@
 ---
 name: ai-coding-setup
-description: 'Set up or update the "AI Coding: Conventions" section in .pi/AGENTS.md. Layers generic constraints, UI feature conventions (if applicable), and project-specific rules.'
+description: 'Set up or update the "AI Coding: Conventions" section in AGENTS.md. Layers generic constraints, UI feature conventions (if applicable), and project-specific rules.'
 ---
 
 # Setup
 
 ## Instructions
 
-This skill generates or updates the "AI Coding: Conventions" section in `.pi/AGENTS.md`.
+This skill generates or updates the "AI Coding: Conventions" section in `AGENTS.md` (project root).
 
 The conventions follow a layered hierarchy:
 
@@ -18,7 +18,7 @@ The conventions follow a layered hierarchy:
 ### Steps
 
 1. **Check existing setup**
-   - If `.pi/AGENTS.md` already has an "AI Coding: Conventions" section, show its current content and ask if the user wants to regenerate or update it.
+   - If `AGENTS.md` already has an "AI Coding: Conventions" section, show its current content and ask if the user wants to regenerate or update it.
 
 2. **Generic layer (always included)**
    - Use `./generic-conventions.md` as-is. No questions needed — these are universal constraints.
@@ -40,7 +40,7 @@ The conventions follow a layered hierarchy:
    - Frame extracted rules as constraints ("do not X", "always X when Y") not aspirational guidance.
 
 5. **Generate the section**
-   - Create or update the "AI Coding: Conventions" section in `.pi/AGENTS.md`.
+   - Create or update the "AI Coding: Conventions" section in `AGENTS.md`.
    - If the file doesn't exist, create it.
    - If the file exists, insert/replace only the "AI Coding: Conventions" section — don't touch other content.
 

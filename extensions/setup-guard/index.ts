@@ -3,7 +3,7 @@
  * Setup Guard Extension
  *
  * Injects a system prompt rule that forces the agent to run /skill:ai-coding-setup
- * before doing any other work if .pi/AGENTS.md lacks an "AI Coding: Conventions" section.
+ * before doing any other work if AGENTS.md lacks an "AI Coding: Conventions" section.
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
@@ -13,7 +13,7 @@ export default function (pi: ExtensionAPI) {
     return {
       systemPrompt:
         event.systemPrompt +
-        '\n\nIf .pi/AGENTS.md does not have an "AI Coding: Conventions" section, run /skill:ai-coding-setup before doing any other work.\n',
+        '\n\nIf AGENTS.md does not have an "AI Coding: Conventions" section, run /skill:ai-coding-setup before doing any other work.\n',
     };
   });
 }
