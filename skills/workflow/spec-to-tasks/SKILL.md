@@ -42,7 +42,7 @@ Follow these steps in order. At each transition, announce the current step to th
 - Use this template for each task:
 
 ```markdown
-## Task X: Name
+## [ ] Task X: Name
 
 **Changes:**
 
