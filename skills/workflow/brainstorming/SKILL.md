@@ -73,4 +73,4 @@ Follow these steps in order. At each transition, announce the current step to th
 8. **Transition to split the spec into tasks**
 
 - Ask the user if they are ready to split the spec into implementation tasks.
-- Once confirmed, invoke the ai-coding-spec-to-tasks skill. Pass the spec file path.
+- Once confirmed, invoke the ai-coding-spec-to-tasks skill.

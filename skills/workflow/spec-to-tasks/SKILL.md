@@ -1,6 +1,6 @@
 ---
 name: ai-coding-spec-to-tasks
-description: Split an approved spec into sequential implementation tasks. Use when a spec has been approved and is ready to be broken into implementable work.
+description: Split a spec into sequential implementation tasks. Use when a spec file exists and is ready to be broken into implementable work.
 ---
 
 # Spec to Tasks
@@ -11,7 +11,7 @@ Follow these steps in order. At each transition, announce the current step to th
 
 1. **Identify the spec file**
 
-- If a spec file path was provided, use it
+- If the spec file path is in context, use it
 - Otherwise, ask the user for the path to the spec file
 
 2. **Plan the split**
@@ -71,4 +71,4 @@ Follow these steps in order. At each transition, announce the current step to th
 7. **Transition to implementation**
 
 - Ask if they are ready to move to implementation.
-- Once confirmed, invoke the ai-coding-implementation skill. Pass the tasks file path.
+- Once confirmed, invoke the ai-coding-implementation skill.
