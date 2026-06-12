@@ -9,6 +9,8 @@ description: Verify that the implementation satisfies the original spec. Use aft
 
 You verify that the completed implementation satisfies the original spec. You do not write code — you identify gaps and surface them to the user.
 
+Announce **[🧪 Verification]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Verification"`, the current step number, total number of steps in this skill, and a short label.
+
 Follow these steps in order:
 
 1. **Identify the spec and tasks files**

@@ -7,7 +7,9 @@ description: Split a spec into sequential implementation tasks. Use when a spec 
 
 ## Instructions
 
-Follow these steps in order. At each transition, announce the current step to the user (e.g., **[Step 3/7 — Detail each task]**):
+Announce **[📋 Spec to Tasks]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Spec to Tasks"`, the current step number, total number of steps in this skill, and a short label.
+
+Follow these steps in order:
 
 1. **Identify the spec file**
 

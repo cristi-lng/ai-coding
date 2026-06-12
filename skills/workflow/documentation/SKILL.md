@@ -9,6 +9,8 @@ description: Update the project's living documentation to reflect what was built
 
 You keep the project's living documentation up to date by delegating writing to a sub-agent.
 
+Announce **[📝 Documentation]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Documentation"`, the current step number, total number of steps in this skill, and a short label.
+
 Follow these steps in order:
 
 1. **Identify the spec file**

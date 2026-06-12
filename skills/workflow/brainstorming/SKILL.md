@@ -9,7 +9,9 @@ description: Collaborative design and specification through dialogue. Explores u
 
 Do NOT write any code, create files, or invoke any implementation skill until you have presented a spec that the user explicitly approved. This applies to EVERY case. Never assume the change is too simple to need a spec.
 
-Follow these steps in order. At each transition, announce the current step to the user (e.g., **[Step 3/8 — Clarifying questions]**):
+Announce **[🎯 Brainstorming]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Brainstorming"`, the current step number, total number of steps in this skill, and a short label.
+
+Follow these steps in order:
 
 1. **Assess the scope**
 
