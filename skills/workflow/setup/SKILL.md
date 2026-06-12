@@ -17,6 +17,8 @@ The conventions follow a layered hierarchy:
 
 ### Steps
 
+Announce **[⚙️ Setup]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Setup"`, the current step number, total number of steps in this skill, and a short label.
+
 1. **Check existing setup**
    - If `AGENTS.md` already has an "AI Coding: Conventions" section, show its current content and ask if the user wants to regenerate or update it.
 

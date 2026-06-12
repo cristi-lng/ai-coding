@@ -51,11 +51,13 @@ export default function (pi: ExtensionAPI) {
       const { skill, step, totalSteps, label, sublabel } = params;
       const text = `[${skill} ${step}/${totalSteps}: ${label}]`;
 
-      ctx.ui.setWidget("workflow-progress", (_tui, theme) => ({
+      const purple = (s: string) => `\x1b[38;2;221;160;221m${s}\x1b[0m`;
+
+      ctx.ui.setWidget("workflow-progress", (_tui, _theme) => ({
         render(_width: number) {
-          const lines = [` ${theme.fg("accent", text)}`];
+          const lines = [purple(text)];
           if (sublabel) {
-            lines.push(` ${theme.fg("dim", "●")} ${theme.fg("dim", sublabel)}`);
+            lines.push(`${purple("●")} ${purple(sublabel)}`);
           }
           return lines;
         },
