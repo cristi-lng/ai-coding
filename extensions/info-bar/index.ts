@@ -2,7 +2,7 @@
 /**
  * Info Bar Extension
  *
- * Uses the default editor with purple-colored borders and three info lines below:
+ * Uses the default bar with purple-colored borders and three info lines below:
  *   1. $cost · ctx used/total · ↑input ↓output ⊕cache  (purple)
  *   2. [spinner] model · provider                       (dim)
  *   3. ~/cwd (branch)                                   (dim)
@@ -135,7 +135,7 @@ export default function (pi: ExtensionAPI) {
 
     // ─── Custom Editor ──────────────────────────────────────────────
 
-    class CleanEditor extends CustomEditor {
+    class InfoBar extends CustomEditor {
       constructor(
         tui: TUI,
         theme: EditorTheme,
@@ -169,7 +169,7 @@ export default function (pi: ExtensionAPI) {
 
         // Line 2: [spinner] model · provider (dim)
         const model = ctx.model;
-        const modelStr = model ? model.id : "no-model";
+        const modelStr = model ? (model.name ?? model.id) : "no-model";
         const providerStr = model ? model.provider : "";
         const spinnerStr = isWorking
           ? purple(spinnerFrames[spinnerIndex]) + " "
@@ -192,7 +192,7 @@ export default function (pi: ExtensionAPI) {
     }
 
     ctx.ui.setEditorComponent((tui, theme, keybindings) => {
-      return new CleanEditor(tui, theme, keybindings);
+      return new InfoBar(tui, theme, keybindings);
     });
   });
 }

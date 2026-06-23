@@ -2,7 +2,7 @@
 /**
  * Workflow Progress Extension
  *
- * Displays a sticky widget above the editor showing the current workflow step.
+ * Displays a sticky widget above the bar showing the current workflow step.
  * Format: [Brainstorming 3/8: Clarifying questions]
  *
  * The LLM calls the `workflow_progress` tool at each step transition.
@@ -31,8 +31,7 @@ export default function (pi: ExtensionAPI) {
       "Update the workflow progress indicator shown to the user. Call at each step transition.",
     parameters: Type.Object({
       skill: Type.String({
-        description:
-          "Current skill name (e.g., Brainstorming, Spec to Tasks, Implementation, Verification, Documentation)",
+        description: "Current skill name (e.g., Brainstorming)",
       }),
       step: Type.Number({ description: "Current step number" }),
       totalSteps: Type.Number({ description: "Total steps in this skill" }),
