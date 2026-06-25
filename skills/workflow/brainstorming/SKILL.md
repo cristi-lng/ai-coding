@@ -50,21 +50,21 @@ Follow these steps in order:
 - Present it in sections, scaled to complexity:
   - straightforward sections: a few sentences
   - complex sections: up to 200-300 words
-- For simple specs (3 sections or fewer), present all at once and ask if it looks right. For longer specs, present ONE section at a time and ask after each whether it looks right so far.
+- For simple outlines (3 sections or fewer), present all at once and ask if it looks right. For longer ones, present ONE section at a time and ask after each whether it looks right so far.
 - Be ready to go back and clarify.
 
 5. **Write the spec**
 
-- Write the spec to `plans/<feature-name>/spec.md`.
+- Write the spec to `plans/YYYY-MM-DD-<feature-name>/spec.md`.
 - Use the approved outline from step 4, visual decision summaries (if any), and project context gathered throughout the conversation.
 
 6. **Self-review the spec**
 
 - Spawn a new sub-agent to review the spec using the rules in `./spec-reviewer.md`.
 - Pass the reviewer both the spec file path and the context (approved outline, user decisions) so it can verify the spec is faithful to what was agreed.
-- If the review finds issues:
-  - The main agent fixes them (not the reviewer). If the fix is clear, apply it and re-review (max 2 cycles).
-  - If the issue is ambiguous or conflicts with user decisions, surface it to the user before proceeding.
+- If the review finds issues, the main agent (not the reviewer) fixes them:
+  - If the fix is clear, apply it and re-review (max 2 cycles).
+  - Otherwise — ambiguous, conflicts with user decisions, or still unresolved after 2 cycles — surface it to the user with your recommendation.
 
 7. **User reviews the spec**
 
@@ -74,5 +74,4 @@ Follow these steps in order:
 
 8. **Transition to split the spec into tasks**
 
-- Ask the user if they are ready to split the spec into implementation tasks.
-- Once confirmed, invoke the ai-coding-spec-to-tasks skill.
+- Once the user has approved the spec, invoke the ai-coding-spec-to-tasks skill.

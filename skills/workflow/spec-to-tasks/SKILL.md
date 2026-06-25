@@ -19,11 +19,10 @@ Follow these steps in order:
 2. **Plan the split**
 
 - Read the spec and determine the high-level breakdown:
-  - How many tasks, in what order
+  - How many tasks, and in what order (respecting dependencies between them)
   - Where the boundaries between tasks fall
-  - Dependencies between them
-- Each task should produce self-contained changes that can be understood and tested independently.
-- Tasks should be small enough that an agent can implement them without losing focus.
+- Each task must deliver a **vertical slice** that the user can verify on its own. Do not create horizontal slices that deliver no user-verifiable value alone (e.g. "create the DB tables", "add the model layer").
+- Tasks should be small enough that an agent can implement them without losing focus — but prefer a larger vertical task over a thin one that isn't verifiable.
 - If you need to explore the codebase to determine affected areas, do so — but do not waste time on broad exploration.
 
 3. **Detail each task**
@@ -39,7 +38,7 @@ Follow these steps in order:
 
 4. **Write the tasks**
 
-- Write tasks to `plans/<feature-name>/tasks.md`.
+- Write tasks to `tasks.md` in the same folder as the spec (e.g. `plans/YYYY-MM-DD-<feature-name>/tasks.md`).
 - Do not include large code blocks.
 - Use this template for each task:
 
@@ -59,11 +58,10 @@ Follow these steps in order:
 
 5. **Self-review**
 
-- Spawn a new sub-agent to review the tasks using the rules in `./tasks-reviewer.md`.
-- Pass the reviewer the spec file path, the tasks file path, and the tasks template so it can verify the tasks cover the spec and are complete and correct.
-- If the review finds issues:
-  - The main agent fixes them (not the reviewer). If the fix is clear, apply it and re-review (max 2 cycles).
-  - If the issue is ambiguous, surface it to the user before proceeding.
+- Spawn a new sub-agent to review the tasks using the rules in `./tasks-reviewer.md`. Do not pass your session history — give the reviewer only the spec file path, the tasks file path, and the tasks template, so it reviews the tasks fresh against the spec.
+- If the review finds issues, the main agent (not the reviewer) fixes them:
+  - If the fix is clear, apply it and re-review (max 2 cycles).
+  - Otherwise — ambiguous, conflicts with the spec, or still unresolved after 2 cycles — surface it to the user with your recommendation.
 
 6. **User reviews the tasks**
 
@@ -72,5 +70,4 @@ Follow these steps in order:
 
 7. **Transition to implementation**
 
-- Ask if they are ready to move to implementation.
-- Once confirmed, invoke the ai-coding-implementation skill.
+- Once the user has approved the tasks, invoke the ai-coding-implementation skill.

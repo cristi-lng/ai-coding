@@ -29,20 +29,22 @@ Follow these steps in order:
 
 - 3.1. **Implementation**
   - Spawn a sub-agent with the full task content from the tasks file and the rules from `./code-implementer.md`
-  - If sub-agent asks clarifying questions → answer from your context if possible; otherwise surface to user
-  - If sub-agent escalates a blocker → surface to user and wait
+  - If the sub-agent asks clarifying questions → answer from your context if possible; otherwise surface to the user. Once answered, the same sub-agent continues the implementation.
+  - If the sub-agent escalates a blocker → surface it to the user and wait. Never skip the task. Resolving a blocker may require updating the task before it can continue — wait for the user's direction; do not proceed on your own if it would deviate from the task.
 
 - 3.2. **Review**
-  - Spawn a sub-agent with the full task content, the list of files changed, and the rules from `./code-reviewer.md`
+  - Spawn a sub-agent with the full task content, the list of files changed (from the implementer's report), and the rules from `./code-reviewer.md`
   - If review approves → move to 3.3
   - If review finds issues → repeat 3.1 with the review issues included, then 3.2 again
-  - Do not repeat this cycle more than 2 times — after that, surface to user
+  - Do not repeat this cycle more than 2 times — after that, surface to the user and wait
 
 - 3.3. **Complete**
-  - Mark the task as done in the tasks file: change `## [ ]` to `## [x]` in the task header
-  - If manual mode → do not proceed to next task until user explicitly confirms
-  - If auto mode → move to next task immediately
+  - If manual mode → pause for the user's review:
+    - If they request changes → go back to 3.1 with their feedback. If the change alters what the task should be, update the task in the tasks file first.
+    - If they confirm → mark the task done (change `## [ ]` to `## [x]` in the task header) and move to the next task
+  - If auto mode → mark the task done (change `## [ ]` to `## [x]` in the task header), then:
+    - If the project uses git and the current branch is not the repository's default branch (e.g. `main`/`master`), commit the task's changes with a short message describing what was implemented in this task. Otherwise, do not commit.
+    - Move to the next task immediately
 
 4. **Transition to verification**
-   - Ask the user if they are ready to verify the implementation against the spec.
-   - Once confirmed, invoke the ai-coding-verification skill.
+   - Once all tasks are complete, invoke the ai-coding-verification skill.

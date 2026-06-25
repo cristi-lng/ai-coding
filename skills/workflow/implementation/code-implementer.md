@@ -2,11 +2,12 @@
 
 ## Constraints
 
-- Do not build beyond what the task specifies.
 - Do not guess when blocked or uncertain — report the issue and stop.
 - Do not write implementation code until you have written the tests.
 - Do not write end-to-end tests — only unit and component tests.
+- Do not build beyond what the task specifies.
 - Do not ignore linting errors.
+- Do not commit or push — leave version control to the orchestrator.
 
 ## Escalate when
 
