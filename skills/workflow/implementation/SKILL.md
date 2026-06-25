@@ -43,7 +43,7 @@ Follow these steps in order:
     - If they request changes → go back to 3.1 with their feedback. If the change alters what the task should be, update the task in the tasks file first.
     - If they confirm → mark the task done (change `## [ ]` to `## [x]` in the task header) and move to the next task
   - If auto mode → mark the task done (change `## [ ]` to `## [x]` in the task header), then:
-    - If the project uses git and the current branch is not the repository's default branch (e.g. `main`/`master`), commit the task's changes with a short message describing what was implemented in this task. Otherwise, do not commit.
+    - Commit the work only if the project uses git and the current branch is not the repository's default branch (e.g. `main`/`master`). When committing, include only the files this task changed (per the implementer's report), with a short message describing what was implemented. Never include unrelated working-tree changes.
     - Move to the next task immediately
 
 4. **Transition to verification**

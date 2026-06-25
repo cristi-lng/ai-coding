@@ -22,13 +22,12 @@ Follow these steps in order:
 
 3. **Run tests and lint**
    - Run the full test suite and linter
-   - If anything fails → surface to user and wait before proceeding
+   - If anything fails → surface it to the user and wait. If the fix means going back to an earlier step, suggest which one and let the user decide.
 
 4. **Validate against spec**
-   - Spawn a sub-agent with the spec file path, the list of changed files, and the rules from `./completion-reviewer.md`
-   - If the reviewer reports gaps or contradictions → surface them to the user
+   - Spawn a sub-agent to validate the implementation against the spec using the rules from `./completion-reviewer.md`. Do not pass your session history — give the reviewer only the spec file path and the list of changed files, so it validates fresh against the spec.
+   - If the reviewer reports gaps or contradictions → surface them to the user and wait. If addressing them means going back to an earlier step (brainstorming, spec-to-tasks, or implementation), suggest which one and let the user decide.
    - If the reviewer reports spec verification passed → announce verification passed
 
 5. **Transition to documentation**
-   - Ask the user if they are ready to update documentation.
-   - Once confirmed, invoke the ai-coding-documentation skill.
+   - Once spec verification has passed, invoke the ai-coding-documentation skill.

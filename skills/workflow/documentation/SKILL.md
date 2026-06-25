@@ -25,9 +25,12 @@ Follow these steps in order:
    - For each file, note what needs to change or be added
 
 3. **Write or update documentation**
-   - Spawn a sub-agent with the spec file path, the affected doc files with what to change in each, and the rules from `./doc-writer.md`
+   - Spawn a sub-agent to write the documentation using the rules from `./doc-writer.md`. Do not pass your session history — give it only the spec file path and the affected doc files with what to change in each.
 
-4. **Announce completion**
-   - Tell the user which doc files were updated or created
-   - Provide a brief summary of what changed in the docs
+4. **User reviews the documentation**
+   - Tell the user which doc files were updated or created, with a brief summary of what changed.
+   - Ask them to review the docs. Wait for their response.
+   - If they request changes, go back to step 3 with their feedback. Once they approve, continue.
+
+5. **Announce completion**
    - Announce: 🚀 **Workflow complete**
