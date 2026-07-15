@@ -1,7 +1,7 @@
 {
   "name": "ai-coding",
   "version": "0.1.0",
-  "description": "AI-assisted development workflow for pi",
+  "description": "AI coding tools for pi",
   "keywords": [
     "pi-package"
   ],
@@ -10,8 +10,7 @@
       "extensions"
     ],
     "skills": [
-      "skills/workflow",
-      "skills/helpers"
+      "skills"
     ]
   }
 }
