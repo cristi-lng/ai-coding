@@ -58,7 +58,7 @@ Follow these steps in order:
 
 5. **Self-review**
 
-- Spawn a new sub-agent to review the tasks using the rules in `./tasks-reviewer.md`. Do not pass your session history — give the reviewer only the spec file path, the tasks file path, and the tasks template, so it reviews the tasks fresh against the spec.
+- Spawn a sub-agent using the `fork` tool with `effort: deep`, to review the tasks using the rules in `./tasks-reviewer.md`. Do not pass your session history — give the reviewer only the spec file path, the tasks file path, and the tasks template, so it reviews the tasks fresh against the spec.
 - If the review finds issues, the main agent (not the reviewer) fixes them:
   - If the fix is clear, apply it and re-review (max 2 cycles).
   - Otherwise — ambiguous, conflicts with the spec, or still unresolved after 2 cycles — surface it to the user with your recommendation.

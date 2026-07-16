@@ -28,12 +28,12 @@ Follow these steps in order:
 3. **For each uncompleted task (`## [ ]`) in the tasks file, follow these steps sequentially:**
 
 - 3.1. **Implementation**
-  - Spawn a sub-agent with the full task content from the tasks file and the rules from `./code-implementer.md`
+  - Spawn a sub-agent using the `fork` tool with `effort: balanced`, with the full task content from the tasks file and the rules from `./code-implementer.md`
   - If the sub-agent asks clarifying questions → answer from your context if possible; otherwise surface to the user. Once answered, the same sub-agent continues the implementation.
   - If the sub-agent escalates a blocker → surface it to the user and wait. Never skip the task. Resolving a blocker may require updating the task before it can continue — wait for the user's direction; do not proceed on your own if it would deviate from the task.
 
 - 3.2. **Review**
-  - Spawn a sub-agent with the full task content, the list of files changed (from the implementer's report), and the rules from `./code-reviewer.md`
+  - Spawn a sub-agent using the `fork` tool with `effort: deep`, with the full task content, the list of files changed (from the implementer's report), and the rules from `./code-reviewer.md`
   - If review approves → move to 3.3
   - If review finds issues → repeat 3.1 with the review issues included, then 3.2 again
   - Do not repeat this cycle more than 2 times — after that, surface to the user and wait

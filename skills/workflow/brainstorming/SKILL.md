@@ -23,7 +23,7 @@ Follow these steps in order:
 
 2. **Explore the relevant code**
 
-- Use a sub-agent to understand the area affected by the request:
+- Spawn a sub-agent using the `fork` tool with `effort: fast`, to understand the area affected by the request:
   - What exists today that relates to the change
   - How the new implementation might integrate (entry points, boundaries, dependencies)
 - Do not explore conventions or architecture — those are already in context via AGENTS.md.
@@ -60,7 +60,7 @@ Follow these steps in order:
 
 6. **Self-review the spec**
 
-- Spawn a new sub-agent to review the spec using the rules in `./spec-reviewer.md`.
+- Spawn a sub-agent using the `fork` tool with `effort: deep`, to review the spec using the rules in `./spec-reviewer.md`.
 - Pass the reviewer both the spec file path and the context (approved outline, user decisions) so it can verify the spec is faithful to what was agreed.
 - If the review finds issues, the main agent (not the reviewer) fixes them:
   - If the fix is clear, apply it and re-review (max 2 cycles).

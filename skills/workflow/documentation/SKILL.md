@@ -25,7 +25,7 @@ Follow these steps in order:
    - For each file, note what needs to change or be added
 
 3. **Write or update documentation**
-   - Spawn a sub-agent to write the documentation using the rules from `./doc-writer.md`. Do not pass your session history — give it only the spec file path and the affected doc files with what to change in each.
+   - Spawn a sub-agent using the `fork` tool with `effort: balanced`, to write the documentation using the rules from `./doc-writer.md`. Do not pass your session history — give it only the spec file path and the affected doc files with what to change in each.
 
 4. **User reviews the documentation**
    - Tell the user which doc files were updated or created, with a brief summary of what changed.
