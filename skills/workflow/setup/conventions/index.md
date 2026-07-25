@@ -25,6 +25,7 @@ Follow these steps in order:
    - Ask: does the project have a UI layer that would benefit from feature-sliced architecture?
    - If yes → ask: whole app or specific folders/packages? (e.g. `packages/ui`, `apps/dashboard`, `src/`)
    - Use `./ui-feature-conventions.md` as the template, scoped to the specified paths.
+   - Apply the "Project defaults" (package manager, styling, routing) as imposed — do not ask. Only override a default if the user already mentioned a different choice or the existing project already uses a different one.
    - If the project uses a different framework than React, adapt the idioms (component naming, hooks → composables, etc.) while keeping the architecture intact.
    - If no UI layer → skip this layer entirely.
 

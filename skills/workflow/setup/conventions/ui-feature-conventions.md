@@ -109,8 +109,10 @@ These rules are enforced via ESLint:
 - `no-restricted-imports` — blocks relative imports
 - `no-restricted-syntax` — blocks default exports
 
-## Preferences (override per project)
+## Project defaults
 
-- Package manager: pnpm
-- Styling: CSS Modules + SASS
-- Routing: code-based (file-based is an alternative if the user prefers)
+Apply these unless the user asks otherwise or the existing project already uses a different choice.
+
+- Package manager: pnpm.
+- Styling: CSS Modules + SASS.
+- Routing: code-based.
