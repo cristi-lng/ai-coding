@@ -9,7 +9,7 @@ description: Verify that the implementation satisfies the original spec. Use aft
 
 You verify that the completed implementation satisfies the original spec. You do not write code — you identify gaps and surface them to the user.
 
-Announce **[🧪 Verification]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Verification"`, the current step number, total number of steps in this skill, and a short label.
+Announce **[🧪 Verification]** when you enter this skill, then write no further inline step announcements. When you enter a step, your FIRST action is to call the `workflow_progress` tool — with `skill: "Verification"`, the step number, the total step count, and a short label — before doing any of the step's work. Do NOT begin a step's work before this call.
 
 Follow these steps in order:
 
@@ -30,4 +30,7 @@ Follow these steps in order:
    - If the reviewer reports spec verification passed → announce verification passed
 
 5. **Transition to documentation**
-   - Once spec verification has passed, invoke the ai-coding-documentation skill.
+   - Call `workflow_summarize_phase` alone (not batched). Write its `summary` as a short standalone note in full sentences, e.g.:
+     ```
+     Verification is complete and the implementation satisfies the spec at plans/YYYY-MM-DD-<feature-name>/spec.md. Next, invoke the `ai-coding-documentation` skill.
+     ```

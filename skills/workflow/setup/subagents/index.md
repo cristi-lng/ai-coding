@@ -12,7 +12,7 @@ The `fork` tool accepts only an `effort` tier (`fast` / `balanced` / `deep`) and
 
 ## Steps
 
-Report progress via the `workflow_progress` tool: `skill: "Setup"`, `step: 2`, `totalSteps: 2`, `label: "Sub-agents"`, and `sublabel` = the current step's short label below.
+When you enter this part, your FIRST action is to call the `workflow_progress` tool — `skill: "Setup"`, `step: 2`, `totalSteps: 2`, `label: "Sub-agents"`, `sublabel` = the current step's short label below — before doing the part's work. Update `sublabel` as you move through the steps below.
 
 Follow these steps in order:
 

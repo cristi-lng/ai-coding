@@ -11,7 +11,7 @@ You are the orchestrator. You do not write code yourself — you delegate implem
 
 Do not pass your session history to sub-agents. Do not dispatch multiple sub-agents in parallel.
 
-Announce **[🔨 Implementation]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Implementation"`, the current step number, total number of steps in this skill, and a short label.
+Announce **[🔨 Implementation]** when you enter this skill, then write no further inline step announcements. When you enter a step, your FIRST action is to call the `workflow_progress` tool — with `skill: "Implementation"`, the step number, the total step count, and a short label — before doing any of the step's work. Do NOT begin a step's work before this call.
 
 During step 3 (the task loop), keep `step: 3` and `label: "Execute tasks"` constant, and use the `sublabel` parameter to show per-task progress (e.g., `Task 1/5 — Implementing: Add auth middleware`, `Task 1/5 — Reviewing: Add auth middleware`).
 
@@ -47,4 +47,7 @@ Follow these steps in order:
     - Move to the next task immediately
 
 4. **Transition to verification**
-   - Once all tasks are complete, invoke the ai-coding-verification skill.
+   - Call `workflow_summarize_phase` alone (not batched). Write its `summary` as a short standalone note in full sentences, e.g.:
+     ```
+     Implementation is complete and all tasks are done. The tasks file is at plans/YYYY-MM-DD-<feature-name>/tasks.md. Next, invoke the `ai-coding-verification` skill.
+     ```

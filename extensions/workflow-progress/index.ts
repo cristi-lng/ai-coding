@@ -15,7 +15,8 @@ export default function (pi: ExtensionAPI) {
   pi.registerTool({
     name: 'workflow_progress',
     label: 'Workflow Progress',
-    description: 'Update the workflow progress indicator shown to the user. Call at each step transition.',
+    description:
+      "Signal that you have entered a workflow step. Call as the FIRST action of every step, before the step's work.",
     parameters: Type.Object({
       skill: Type.String({ description: 'Current skill name (e.g., Brainstorming)' }),
       step: Type.Number({ description: 'Current step number' }),

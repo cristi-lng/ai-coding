@@ -7,7 +7,7 @@ description: Split a spec into sequential implementation tasks. Use when a spec 
 
 ## Instructions
 
-Announce **[📋 Spec to Tasks]** when you enter this skill (for scroll-back readability), then do not write any more inline step announcements. Instead, call the `workflow_progress` tool at each step transition with `skill: "Spec to Tasks"`, the current step number, total number of steps in this skill, and a short label.
+Announce **[📋 Spec to Tasks]** when you enter this skill, then write no further inline step announcements. When you enter a step, your FIRST action is to call the `workflow_progress` tool — with `skill: "Spec to Tasks"`, the step number, the total step count, and a short label — before doing any of the step's work. Do NOT begin a step's work before this call.
 
 Follow these steps in order:
 
@@ -70,4 +70,7 @@ Follow these steps in order:
 
 7. **Transition to implementation**
 
-- Once the user has approved the tasks, invoke the ai-coding-implementation skill.
+- Call `workflow_summarize_phase` alone (not batched). Write its `summary` as a short standalone note in full sentences, e.g.:
+  ```
+  Spec-to-tasks is complete and the tasks are approved. The tasks are at plans/YYYY-MM-DD-<feature-name>/tasks.md. Next, invoke the `ai-coding-implementation` skill.
+  ```

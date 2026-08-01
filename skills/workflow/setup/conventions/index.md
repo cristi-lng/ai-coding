@@ -10,7 +10,7 @@ The conventions follow a layered hierarchy:
 
 ## Steps
 
-Report progress via the `workflow_progress` tool: `skill: "Setup"`, `step: 1`, `totalSteps: 2`, `label: "Conventions"`, and `sublabel` = the current step's short label below.
+When you enter this part, your FIRST action is to call the `workflow_progress` tool — `skill: "Setup"`, `step: 1`, `totalSteps: 2`, `label: "Conventions"`, `sublabel` = the current step's short label below — before doing the part's work. Update `sublabel` as you move through the steps below.
 
 Follow these steps in order:
 
