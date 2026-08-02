@@ -1,12 +1,21 @@
 # Setup — Conventions
 
-Generates or updates the "AI Coding: Conventions" section in `AGENTS.md` (project root).
+Generates or updates the "AI Coding: Conventions" section in `AGENTS.md` (project root) and its
+supporting reference docs in `docs/conventions/`.
 
-The conventions follow a layered hierarchy:
+Conventions are authored as two kinds of files in this folder:
 
-1. **Generic** — always present, the baseline for all code
-2. **UI Feature conventions** — optional, scoped to specific paths (frontend/full-stack apps)
-3. **Project-specific** — optional, extracted from code or user preferences
+- `context-<topic>.md` → its body is inserted into `AGENTS.md` under `### <Title>`. These are the
+  short resident constraints the agent reads every turn.
+- `docs-<topic>.md` → its body is written to `docs/conventions/<topic>.md`. These are the long
+  reference slices (diagrams, examples, rationale) loaded on demand.
+
+Pointers from a section to its reference doc are already baked into the `context-<topic>.md` bodies
+as constraint bullets. Do NOT synthesize pointers — insert the `context` bodies as-is (the only
+change allowed is naming the UI roots per step 3).
+
+Ownership: setup OWNS `docs/conventions/` and overwrites it on every run. Do NOT write into
+`docs/product/` — that belongs to the documentation skill.
 
 ## Steps
 
@@ -15,51 +24,78 @@ When you enter this part, your FIRST action is to call the `workflow_progress` t
 Follow these steps in order:
 
 1. **Check for an existing section**
-   - If `AGENTS.md` already has an "AI Coding: Conventions" section, show its current content and ask regenerate / update / skip.
+   - Check only `AGENTS.md` — its `## AI Coding: Conventions` section is the source of truth (the
+     `docs/conventions/` files are derived from it).
+   - If the section exists, show its current content and ask regenerate or skip.
    - If the user chooses skip → stop here; this part is done.
 
-2. **Generic layer (always included)**
-   - Use `./generic-conventions.md` as-is. No questions needed — these are universal constraints.
+2. **Generic (always included)**
+   - Insert `./context-generic.md` as-is under `### Generic`. No questions, no doc, no pointer.
 
-3. **UI Feature conventions (ask)**
+3. **UI features (ask)**
    - Ask: does the project have a UI layer that would benefit from feature-sliced architecture?
-   - If yes → ask: whole app or specific folders/packages? (e.g. `packages/ui`, `apps/dashboard`, `src/`)
-   - Use `./ui-feature-conventions.md` as the template, scoped to the specified paths.
-   - Apply the "Project defaults" (package manager, styling, routing) as imposed — do not ask. Only override a default if the user already mentioned a different choice or the existing project already uses a different one.
+   - If no → skip this topic entirely.
+   - If yes → ask: whole app or specific folders/packages? (e.g. `packages/ui`, `apps/dashboard`, `src/`).
+   - Insert `./context-ui-features.md` under `### UI features`.
+   - Write `./docs-ui-features.md` → `docs/conventions/ui-features.md` and
+     `./docs-component-split.md` → `docs/conventions/component-split.md`. Both pointers are already
+     in the `context` body.
+   - The `src/features/<feature>/` paths in the section and the docs are illustrative. When UI is
+     scoped to specific folders rather than the whole app, name the actual root(s) next to the
+     doc-pointer bullets in the `### UI features` section — e.g. `packages/ui/src`,
+     `apps/dashboard/src`, listing all of them when there are several.
    - If the project uses a different framework than React, adapt the idioms (component naming, hooks → composables, etc.) while keeping the architecture intact.
-   - If no UI layer → skip this layer entirely.
 
-4. **Project-specific conventions (ask)**
+4. **Services (ask)**
+   - Ask whether the project is (or will be) written in JS/TS — a JS/TS project has business logic
+     worth these conventions. Pre-answer the question from the conversation/repo when it is obvious.
+   - If no → skip this topic.
+   - Insert `./context-services.md` under `### Services` and write `./docs-services.md` →
+     `docs/conventions/services.md`. The pointer is already in the `context` body.
+
+5. **Project-specific (ask)**
    - Ask: "Do you have specific conventions, a template, or a reference for this project? Or should I extract patterns from the current codebase?"
    - Options:
-     - User provides a link/template → extract actionable constraints from it
-     - User says extract from code → analyze the existing codebase and summarize key patterns as constraints
-     - User has no code and no reference → skip this layer
+     - User provides a link/template → extract actionable constraints from it.
+     - User says extract from code → analyze the existing codebase and summarize key patterns as constraints.
+     - User has no code and no reference → skip this topic.
    - Focus on things the model cannot infer: unusual patterns, banned approaches, team decisions, tool-specific workflows.
    - Frame extracted rules as constraints ("do not X", "always X when Y") not aspirational guidance.
+   - Placement judgment: keep short, high-level constraints in the `### Project-specific` section. If
+     the material is long or example-heavy, write it to `docs/conventions/<topic>.md` and leave a
+     single pointer bullet in the section naming its trigger.
 
-5. **Generate the section**
-   - Create or update the "AI Coding: Conventions" section in `AGENTS.md`.
-   - If the file doesn't exist, create it.
-   - If the file exists, insert/replace only the "AI Coding: Conventions" section — don't touch other content.
-   - Keep it concise — agents read this on every turn. Constraints over descriptions.
-   - Follow the layered hierarchy below. Include only the layers that apply; if no UI layer and no project-specific rules, emit only `### Generic`.
+6. **Generate the section**
+   - Create or update the `## AI Coding: Conventions` section in `AGENTS.md`. Create the file if it doesn't exist.
+   - The section runs from the `## AI Coding: Conventions` heading to the next `##` heading (or end
+     of file). On update, replace that whole span so re-runs never duplicate. Do not touch other content.
+   - Insert each included topic's `context` body in order, under its own `### <Title>`. If a topic
+     is skipped this run, leave out its section and delete any `docs/conventions/*.md` that an
+     earlier run created for it.
+   - Write each included topic's `docs/conventions/<topic>.md` with this line as a blockquote
+     directly under the `# ` heading, so both humans and other skills know setup owns it:
+     `> _Generated by ai-coding setup — owned by setup, may be overwritten on re-run. Do not edit by hand._`
+   - The layout of a fully-populated section:
 
    ```markdown
    ## AI Coding: Conventions
 
    ### Generic
 
-   (content from generic-conventions.md)
+   (context-generic body)
 
-   ### UI Feature conventions (src/, packages/ui)
+   ### UI features
 
-   (content from ui-feature-conventions.md, scoped to specified paths)
+   (context-ui-features body — includes pointers to docs/conventions/ui-features.md and component-split.md)
+
+   ### Services
+
+   (context-services body — includes pointer to docs/conventions/services.md)
 
    ### Project-specific
 
-   (constraints extracted from code, user template, or preferences)
+   (short constraints; optional pointer if a doc was written)
    ```
 
-6. **Confirm**
-   - Show the user what was generated and ask if they want to adjust anything.
+7. **Confirm**
+   - Show the `AGENTS.md` section diff AND the list of written `docs/conventions/*` files, then ask if they want to adjust anything.

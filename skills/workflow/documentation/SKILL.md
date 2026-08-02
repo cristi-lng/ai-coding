@@ -20,9 +20,10 @@ Follow these steps in order:
 2. **Determine documentation impact**
    - Read the spec to understand what changed
    - If the change doesn't affect behavior or features (e.g., refactor, infra) → skip to step 5
-   - Check existing files in `docs/` to understand what's already covered (scan headings, don't read full content)
-   - Decide which files to update or create — new files follow `docs/<feature-or-domain>.md`
+   - Check existing files in `docs/product/` to understand what's already covered (scan headings, don't read full content)
+   - Decide which files to update or create — new files follow `docs/product/<feature-or-domain>.md`
    - For each file, note what needs to change or be added
+   - Ownership: documentation owns `docs/product/`; setup owns `docs/conventions/`. Do NOT write into `docs/conventions/`.
 
 3. **Write or update documentation**
    - Spawn a sub-agent using the `fork` tool with `effort: balanced`, to write the documentation using the rules from `./doc-writer.md`. Do not pass your session history — give it only the spec file path and the affected doc files with what to change in each.
