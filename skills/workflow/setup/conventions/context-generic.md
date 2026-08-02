@@ -1,4 +1,4 @@
-## Constraints
+#### Constraints
 
 - Do not create a new abstraction, utility or pattern when an equivalent already exists. Search the codebase first.
 - Do not introduce a second way to solve a problem the project already solves.

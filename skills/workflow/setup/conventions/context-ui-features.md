@@ -2,7 +2,7 @@ This is a UI application organized by feature. Each feature is a self-contained 
 
 Each component is split by responsibility: the rendering (JSX and markup), the business logic (framework-independent services), and the glue that connects them to the framework (hooks, in React). Start with a single file and split only when one of these concerns becomes hard to follow on its own.
 
-## Constraints
+#### Constraints
 
 - Do not import a feature's internals from outside it. Use another feature only through its `index.tsx`.
 - Do not place feature-specific code outside its feature folder, and do not place shared or global code inside a feature.

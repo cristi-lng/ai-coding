@@ -9,7 +9,9 @@ Setup for ai-coding, composed of independent **parts** that each decide on their
 
 Announce **[⚙️ Setup]** when you enter this skill, then write no further inline step announcements. Each part reports progress via the `workflow_progress` tool as its first action.
 
-Run each part in order, on every entry. Do NOT skip a part or add branching here:
+Run the parts in the order listed below, on every entry. Do NOT skip a part or add branching here. Run one part at a time: fully complete a part — including its confirm step — before starting the next.
+
+Ask one question at a time. Wait for the user's answer before asking the next. Never combine multiple questions into a single message, and never combine questions or steps from different parts into one message.
 
 1. **Conventions** → follow `./conventions/index.md`
 2. **Sub-agents** → follow `./subagents/index.md`

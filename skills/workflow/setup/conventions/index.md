@@ -54,7 +54,8 @@ Follow these steps in order:
      `docs/conventions/services.md`. The pointer is already in the `context` body.
 
 5. **Project-specific (ask)**
-   - Ask: "Do you have specific conventions, a template, or a reference for this project? Or should I extract patterns from the current codebase?"
+   - Ask only about coding conventions: "Do you have specific coding conventions, a style guide, or a template for this project? Or should I extract patterns from the current codebase?"
+   - Do NOT ask about or discuss what the project does, what to build, its features, or its scope. Stay strictly on coding conventions.
    - Options:
      - User provides a link/template → extract actionable constraints from it.
      - User says extract from code → analyze the existing codebase and summarize key patterns as constraints.
