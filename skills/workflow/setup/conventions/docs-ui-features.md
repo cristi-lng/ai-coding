@@ -68,6 +68,7 @@ This keeps features swappable and prevents a web of deep imports.
 - Import global code through the `src/...` alias, which resolves to the project's `src/` root.
 - Do not use relative imports, except for style files in the same folder.
 - Do not use default exports anywhere; every module exports named symbols only.
+- Do not place exports inline in the middle of a file; declare functions, constants, and components first, then export them in a single block at the end.
 
 ## Data flow
 

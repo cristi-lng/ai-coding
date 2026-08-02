@@ -8,16 +8,19 @@ There are two shapes. Pick by how the functions relate to each other.
 ## Shape 1: flat functions (independent logic)
 
 When the functions are independent — they don't call each other and share no state, like a utility
-module — export them directly as named functions and constants.
+module — declare them as named functions and constants, then export them in a single block at
+the end of the file.
 
 ```ts
-export function formatPrice(value: number): string {
+function formatPrice(value: number): string {
   return `$${value.toFixed(2)}`;
 }
 
-export function applyDiscount(price: number, percent: number): number {
+function applyDiscount(price: number, percent: number): number {
   return price * (1 - percent / 100);
 }
+
+export { formatPrice, applyDiscount };
 ```
 
 ## Shape 2: factory (related or stateful logic)
@@ -30,7 +33,7 @@ methods. Not a class, not an IIFE.
 import { getProduct } from '~catalog';
 
 /** Holds the items a shopper has added and keeps the running total in sync. */
-export function createCart() {
+function createCart() {
   // state
   const items = new Map<string, number>(); // productId -> quantity
 
@@ -82,6 +85,7 @@ Use **named `function` declarations**, never arrows assigned to the returned obj
 
 ### What to export
 
+- Do not place exports inline in the middle of a file; declare everything first, then export in a single block at the end.
 - If the app needs a single shared instance, create it once and export it: `export const cart = createCart()`.
 - If callers each need their own instance, export the factory instead: `export { createOrder }`, and
   let each caller call it.
