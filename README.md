@@ -10,14 +10,16 @@ First install [ai-base](https://github.com/cristi-lng/ai-base) — the foundatio
 
 ```bash
 # ai-base — global, writes to ~/.pi/agent/settings.json
-pi install git:github.com/cristi-lng/ai-base@v1.0.0
+# replace vx.x.x with the desired release tag
+pi install git:github.com/cristi-lng/ai-base@vx.x.x
 ```
 
 Then install ai-coding per project:
 
 ```bash
 # ai-coding — per project, writes to .pi/settings.json
-pi install git:github.com/cristi-lng/ai-coding@v1.0.0 -l
+# replace vx.x.x with the desired release tag
+pi install git:github.com/cristi-lng/ai-coding@vx.x.x -l
 ```
 
 ## Usage
